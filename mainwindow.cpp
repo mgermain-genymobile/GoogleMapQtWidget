@@ -98,6 +98,5 @@ void MainWindow::onGoogleMapsReply(QNetworkReply* reply)
 
 void JsObject::jsCallback(double lat, double lng)
 {
-    //QMessageBox::critical(NULL, "MGE", QString("lat: %1, lng: %2").arg(lat).arg(lng), QMessageBox::Ok);
     qDebug() << QString("C++ retrieved Latitude = %1, Longitude = %2").arg(lat).arg(lng);
 }
