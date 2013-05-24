@@ -96,7 +96,12 @@ void MainWindow::onGoogleMapsReply(QNetworkReply* reply)
 }
 
 
-void JsObject::jsCallback(double lat, double lng)
+void JsObject::jsCallback(double lat, double lng, double alt)
 {
-    qDebug() << QString("C++ retrieved Latitude = %1, Longitude = %2").arg(lat).arg(lng);
+    QTextStream out(stdout);
+
+    out << "Retrieved values :" << endl;
+    out << QString(" - Latitude  = %1 degrees").arg(lat) << endl;
+    out << QString(" - Longitude = %1 degrees").arg(lng) << endl;
+    out << QString(" - Altitude  = %1 meters").arg(alt) << endl;
 }

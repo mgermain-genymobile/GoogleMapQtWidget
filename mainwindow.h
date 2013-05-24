@@ -11,7 +11,7 @@ class JsObject : public QObject
 {
     Q_OBJECT
  public:
-     Q_INVOKABLE void jsCallback(double lat, double lng);
+     Q_INVOKABLE void jsCallback(double lat, double lng, double alt);
  };
 
 class MainWindow : public QMainWindow

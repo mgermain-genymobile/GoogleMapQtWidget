@@ -9,7 +9,7 @@
     </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
-    var map;
+    var map, elevator;
     var marker = null;
 
     function initialize() {
@@ -20,6 +20,9 @@
             panControl: true
         };
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+        // Create an ElevationService
+        elevator = new google.maps.ElevationService();
 
         google.maps.event.addListener(map, 'click', function(event) {
             placeMarker(event.latLng);
@@ -38,8 +41,21 @@
             map: map
         });
 
-        coordinates.jsCallback(location.lat(), location.lng());
+        // Create a LocationElevationRequest object using the array's one value
+        var positionalRequest = {
+            'locations': [ location ]
+        }
+
+        // Initiate the location request
+        elevator.getElevationForLocations(positionalRequest, function(results, status) {
+            var alt = 0;
+            if (status == google.maps.ElevationStatus.OK && results[0]) {
+                    alt = results[0].elevation;
+            }
+            coordinates.jsCallback(location.lat(), location.lng(), alt);
+        });
     }
+
     </script>
   </head>
   <body>
