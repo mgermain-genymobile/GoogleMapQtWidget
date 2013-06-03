@@ -41,6 +41,9 @@ private slots:
     // Search button has been clicked
     void onSearch();
 
+    // Center map and place a marker at a given position
+    void setPosition(double lat, double lng);
+
     // Method fetched when a googlemaps location search request has got its reply
     void onGoogleMapsReply(QNetworkReply*);
 };

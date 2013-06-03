@@ -56,6 +56,12 @@
         });
     }
 
+    // Set marker to a given position and center map around it
+    function setPosition(lat, lng) {
+        var location = new google.maps.LatLng(lat, lng);
+        map.setCenter(location);
+        placeMarker(location);
+    }
     </script>
   </head>
   <body>

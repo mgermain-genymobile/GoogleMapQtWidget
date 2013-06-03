@@ -59,6 +59,12 @@ void MainWindow::onSearch()
     network->get(QNetworkRequest(url));
 }
 
+// Center map and place a marker at a given position
+void MainWindow::setPosition(double lat, double lng)
+{
+    webView->page()->mainFrame()->evaluateJavaScript(QString("setPosition(%1, %2);").arg(lat).arg(lng));
+}
+
 // Method fetched when a googlemaps location search request has got its reply
 void MainWindow::onGoogleMapsReply(QNetworkReply* reply)
 {
